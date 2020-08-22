@@ -46,16 +46,26 @@ const dropdownData = [
 
 const App = () => {
   const [selectedOption, setSelectedOption] = useState(dropdownData[0]);
+  const [showDropdown, setshowDropdown] = useState(true);
+  const textStyle = {
+    color: selectedOption.value,
+  };
   return (
     <div>
       {/* <Accordion items={accordionData} />
       <br/> */}
       {/* <Search /> */}
-      <Dropdown
-        options={dropdownData}
-        selected={selectedOption}
-        onSelectChange={setSelectedOption}
-      />
+      <div>
+        <button className="ui button" onClick={() => setshowDropdown(!showDropdown)}>Toggle Dropdown</button>
+        {showDropdown ?
+          <Dropdown
+            options={dropdownData}
+            selected={selectedOption}
+            onSelectChange={setSelectedOption}
+          /> : null
+        }
+        <h4 style={textStyle}>This text is { selectedOption.value }</h4>
+      </div>
     </div>
   )
 }
