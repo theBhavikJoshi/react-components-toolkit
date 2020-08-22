@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 // import Accordion from './Accordion';
 // import Search from './Search';
-import Dropdown from './Dropdown';
+// import Dropdown from './Dropdown';
+import Translate from './Translate';
 
 const accordionData = [
   {
@@ -51,21 +52,23 @@ const App = () => {
     color: selectedOption.value,
   };
   return (
-    <div>
+    <div className='ui container'>
       {/* <Accordion items={accordionData} />
       <br/> */}
       {/* <Search /> */}
-      <div>
+      {/* <div>
         <button className="ui button" onClick={() => setshowDropdown(!showDropdown)}>Toggle Dropdown</button>
         {showDropdown ?
           <Dropdown
+            label='select a color'
             options={dropdownData}
             selected={selectedOption}
             onSelectChange={setSelectedOption}
           /> : null
         }
         <h4 style={textStyle}>This text is { selectedOption.value }</h4>
-      </div>
+      </div> */}
+      <Translate />
     </div>
   )
 }
