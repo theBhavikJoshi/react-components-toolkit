@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-// import Accordion from './Accordion';
-// import Search from './Search';
-// import Dropdown from './Dropdown';
+import Accordion from './Accordion';
+import Search from './Search';
+import Dropdown from './Dropdown';
 import Translate from './Translate';
+import Header from './Header';
+import Route from './Route';
 
 const accordionData = [
   {
@@ -53,22 +55,30 @@ const App = () => {
   };
   return (
     <div className='ui container'>
-      {/* <Accordion items={accordionData} />
-      <br/> */}
-      {/* <Search /> */}
-      {/* <div>
-        <button className="ui button" onClick={() => setshowDropdown(!showDropdown)}>Toggle Dropdown</button>
-        {showDropdown ?
-          <Dropdown
-            label='select a color'
-            options={dropdownData}
-            selected={selectedOption}
-            onSelectChange={setSelectedOption}
-          /> : null
-        }
-        <h4 style={textStyle}>This text is { selectedOption.value }</h4>
-      </div> */}
-      <Translate />
+      <Header />
+      <Route path='/'>
+        <Accordion items={accordionData} />
+      </Route>
+      <Route path='/search'>
+        <Search />
+      </Route>
+      <Route path='/dropdown'>
+        <div>
+          <button className="ui button" onClick={() => setshowDropdown(!showDropdown)}>Toggle Dropdown</button>
+          {showDropdown ?
+            <Dropdown
+              label='select a color'
+              options={dropdownData}
+              selected={selectedOption}
+              onSelectChange={setSelectedOption}
+            /> : null
+          }
+          <h4 style={textStyle}>This text is {selectedOption.value}</h4>
+        </div>
+      </Route>
+      <Route path='/translate'>
+        <Translate />
+      </Route>
     </div>
   )
 }
